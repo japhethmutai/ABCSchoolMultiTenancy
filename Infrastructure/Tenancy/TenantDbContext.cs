@@ -12,6 +12,9 @@ namespace Infrastructure.Tenancy
 
             builder.Entity<ABCSchoolTenantInfo>()
                 .ToTable("Tenants", SchemaNames.Multitenancy);
+
+            builder.Entity<TenancySubscription>()
+                .ToTable("TenancySubscriptions", SchemaNames.Multitenancy);
         }
     }
 }
