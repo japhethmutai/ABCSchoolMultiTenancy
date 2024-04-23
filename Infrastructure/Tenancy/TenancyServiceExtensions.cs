@@ -22,7 +22,8 @@ namespace Infrastructure.Tenancy
                 .WithCustomQueryStringStrategy(TenancyConstants.TenantIdName)
                 .WithEFCoreStore<TenantDbContext, ABCSchoolTenantInfo>()
                 .Services
-                .AddScoped<ITenantService, TenantService>();
+                .AddScoped<ITenantService, TenantService>()
+                .AddScoped<ITenancySubscriptionService, TenancySubscriptionService>();
         }
 
         internal static IApplicationBuilder UseMultitenancy(this IApplicationBuilder app)

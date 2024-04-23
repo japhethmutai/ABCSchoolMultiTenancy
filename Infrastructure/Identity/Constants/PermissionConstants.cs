@@ -19,6 +19,7 @@ namespace Infrastructure.Identity.Constants
         public const string Roles = nameof(Roles);
         public const string RoleClaims = nameof(RoleClaims);
         public const string Schools = nameof(Schools);
+        public const string TenancySubscription = nameof(TenancySubscription);
     }
 
     public record SchoolPermission(string Description, string Action, string Feature, bool IsBasic = false, bool IsRoot = false)
@@ -59,6 +60,11 @@ namespace Infrastructure.Identity.Constants
             new SchoolPermission("Create Tenant", SchoolAction.Create, SchoolFeature.Tenants, IsRoot: true),
             new SchoolPermission("Update Tenant", SchoolAction.Update, SchoolFeature.Tenants, IsRoot: true),
             new SchoolPermission("Upgrade Tenant Subscription", SchoolAction.UpgradeSubscription, SchoolFeature.Tenants, IsRoot: true),
+            
+            new SchoolPermission("View TenancySubscriptions", SchoolAction.View, SchoolFeature.TenancySubscription, IsRoot: true),
+            new SchoolPermission("Create TenancySubscription", SchoolAction.Create, SchoolFeature.TenancySubscription, IsRoot: true),
+            new SchoolPermission("Update TenancySubscription", SchoolAction.Update, SchoolFeature.TenancySubscription, IsRoot: true),
+            new SchoolPermission("Delete TenancySubscription", SchoolAction.Delete, SchoolFeature.TenancySubscription, IsRoot: true),
         ];
 
         public static IReadOnlyList<SchoolPermission> All { get; } = 
