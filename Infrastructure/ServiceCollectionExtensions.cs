@@ -1,8 +1,10 @@
 ﻿using Application.Features.Schools;
+using Application.Features.Teachers;
 using Infrastructure.Identity;
 using Infrastructure.OpenApi;
 using Infrastructure.Persistence;
 using Infrastructure.Schools;
+using Infrastructure.Teachers;
 using Infrastructure.Tenancy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +23,8 @@ namespace Infrastructure
                 .AddPermissions()
                 .AddJwtAuthentication()
                 .AddOpenApiDocumentation(configuration)
-                .AddScoped<ISchoolService, SchoolService>();
+                .AddScoped<ISchoolService, SchoolService>()
+                .AddScoped<ITeacherService, TeacherService>();
         }
 
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)

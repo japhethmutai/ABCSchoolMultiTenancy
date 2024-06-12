@@ -1,0 +1,10 @@
+{
+  "MailSettings": {
+    "DisplayName": "Japheth Mutai",
+    "From": "japhemchirie@gmail.com",
+    "Host": "smtp.ethereal.email",
+    "Password": "qCrqEuNnM7uyWgqthW",
+    "Port": 587,
+    "UserName": "geovany13@ethereal.email"
+  }
+}

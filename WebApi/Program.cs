@@ -1,6 +1,9 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Logging.Serilog;
 using Infrastructure.Persistence;
+using System.Configuration;
+using WebApi.Configurations;
 
 namespace WebApi
 {
@@ -11,7 +14,7 @@ namespace WebApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.AddConfigurations().RegisterSerilog();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddApplicationServices();

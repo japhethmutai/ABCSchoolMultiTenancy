@@ -1,0 +1,6 @@
+{
+  "DatabaseSettings": {
+    "DBProvider": "postgresql",
+    "ConnectionString": "Host=localhost;Port=5432;Database=ABCTestWithPostgres;Username=postgres;Password=JehovahGod;Include Error Detail=true"
+  }
+}

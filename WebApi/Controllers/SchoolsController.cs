@@ -3,6 +3,8 @@ using Application.Features.Schools.Commands;
 using Application.Features.Schools.Queries;
 using Infrastructure.Identity.Auth;
 using Infrastructure.Identity.Constants;
+using Infrastructure.OpenApi;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +15,9 @@ namespace WebApi.Controllers
     public class SchoolsController : BaseApiController
     {
         [HttpPost("add")]
-        [ShouldHavePermission(SchoolAction.Create, SchoolFeature.Schools)]
+        //[ShouldHavePermission(SchoolAction.Create, SchoolFeature.Schools)]
+        [AllowAnonymous]
+        [TenantHeader]
         public async Task<IActionResult> CreateSchoolAsync([FromBody] CreateSchoolRequest createSchool)
         {
             var response = await Sender.Send(new CreateSchoolCommand { SchoolRequest = createSchool });
@@ -78,7 +82,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("all")]
-        [ShouldHavePermission(SchoolAction.View, SchoolFeature.Schools)]
+        //[ShouldHavePermission(SchoolAction.View, SchoolFeature.Schools)]
+        [AllowAnonymous]
+        [TenantHeader]
         public async Task<IActionResult> GetAllSchoolsAsync()
         {
             var response = await Sender.Send(new GetAllSchoolsQuery());

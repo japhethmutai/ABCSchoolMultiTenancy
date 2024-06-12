@@ -5,8 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Tenancy
 {
-    public class TenantDbContext(DbContextOptions<TenantDbContext> options) : EFCoreStoreDbContext<ABCSchoolTenantInfo>(options)
+    public class TenantDbContext : EFCoreStoreDbContext<ABCSchoolTenantInfo>
     {
+        public TenantDbContext(DbContextOptions<TenantDbContext> options)
+        : base(options)
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
+
         public DbSet<TenancySubscription> TenancySubscriptions => Set<TenancySubscription>();
         protected override void OnModelCreating(ModelBuilder builder)
         {

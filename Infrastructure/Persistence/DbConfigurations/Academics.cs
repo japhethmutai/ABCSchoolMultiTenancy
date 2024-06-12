@@ -19,4 +19,18 @@ namespace Infrastructure.Persistence.DbConfigurations
                 .HasMaxLength(100);
         }
     }
+
+    internal class TeacherConfig : IEntityTypeConfiguration<Teacher>
+    {
+        public void Configure(EntityTypeBuilder<Teacher> builder)
+        {
+            builder
+                .ToTable("Teachers", SchemaNames.Academics);
+
+            builder
+                .Property(s => s.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+        }
+    }
 }
